@@ -2,6 +2,7 @@ package com.vmart.bigbasket.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.Fetch;
 
 import java.math.BigDecimal;
 import java.util.Set;
@@ -27,7 +28,7 @@ public class Product extends AuditStamp{
     private Double discount;
     @Column(name = "quantity")
     private Integer quantity;
-    @ManyToMany(mappedBy = "products")
+    @ManyToMany( fetch = FetchType.EAGER, mappedBy = "products")
     private Set<Basket> baskets;
     @ManyToOne
     @JoinColumn(name = "category_id")

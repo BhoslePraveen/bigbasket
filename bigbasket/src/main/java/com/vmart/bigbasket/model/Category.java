@@ -16,6 +16,6 @@ public class Category extends AuditStamp {
     @Column(name = "category_name")
     private String name;
 
-    @OneToMany(mappedBy = "category")
+    @OneToMany( fetch = FetchType.EAGER, mappedBy = "category")
     private Set<SubCategory> subCategories;
 }

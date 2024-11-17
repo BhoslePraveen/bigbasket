@@ -2,13 +2,16 @@ package com.vmart.bigbasket.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.util.Set;
 
 @Entity
 @Table(name = "basket")
-@Data
+@Getter
+@Setter
 public class Basket extends AuditStamp {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +25,7 @@ public class Basket extends AuditStamp {
 
     @Column(name = "amount")
     private BigDecimal totalAmount;
+
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
